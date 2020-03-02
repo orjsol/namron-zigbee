@@ -1,0 +1,1006 @@
+{
+  "id": "com.easyhome.mw.zigbee",
+  "version": "1.0.7",
+  "compatibility": ">=1.5.0",
+  "sdk": 2,
+  "brandColor": "#06A1FF",
+  "name": {
+    "en": "EasyHome"
+  },
+  "tags": {
+    "en": ["EasyHome", "Sunricher", "EasyHome SmartHome", "EasyHome Sunricher","ZigBee", "ZigBee Light"]
+  },
+  "description": {
+    "en": "Adds support for ZigBee & Z-Wave devices."
+  },
+  "category": [
+    "lights"
+  ],
+  "permissions": [
+    "homey:wireless:zigbee",
+    "homey:wireless:zwave"
+  ],
+  "images": {
+    "large": "/assets/images/large.png",
+    "small": "/assets/images/small.png"
+  },
+  "author": {
+    "name": "Easy Home",
+    "email": "sunricher_src@163.com"
+  },
+  "bugs": {
+    "url": "https://github.com/easyhomesrc/Homey_EasyHome/issues"
+  },
+  "source": "https://github.com/easyhomesrc/Homey_EasyHome",
+  "flow": {
+    "triggers": [
+      {
+        "id": "wall_controller_button",
+        "title": {
+          "en": "A button has been pressed",
+          "nl": "Een knop is ingedrukt"
+        },
+        "hint": {
+          "en": "This card will trigger on any button pressed and provides the scene tokens.",
+          "nl": "Deze kaart wordt geactiveerd bij iedere knop die ingedrukt wordt en biedt de scene tokens aan."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=ZGRC-KEY-001|ZGRC-KEY-004|ZG2833K4_EU06|ZG2833K8_EU05|ZGRC-KEY-037|ZG2868A|ZV9001K2-DIM|ZV9001K4-DIM-G2|ZV9001K8-DIM-G4|ZV9001K4-DIM|ZV9001NK12-DIM-Z4"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "button",
+            "type": "string",
+            "title": {
+              "en": "button",
+              "nl": "knop"
+            },
+            "example": {
+              "en": "0"
+            }
+          },
+          {
+            "name": "scene",
+            "type": "string",
+            "title": {
+              "en": "scene",
+              "nl": "scene"
+            },
+            "example": {
+              "en": "Button pressed (test)"
+            }
+          }
+        ]
+      },
+      {
+        "id": "wall_controller_scene",
+        "title": {
+          "en": "A scene has been activated",
+          "nl": "Een scene is geactiveerd"
+        },
+        "hint": {
+          "en": "This card will only get triggered if the scene matches the state of the dropdown fields.",
+          "nl": "Deze kaart wordt alleen geactiveerd wanneer de scene overeenkomt met de toestand van de gekozen opties."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=ZGRC-KEY-001|ZGRC-KEY-004|ZG2833K4_EU06|ZG2833K8_EU05|ZGRC-KEY-037|ZG2868A|ZV9001K2-DIM|ZV9001K4-DIM-G2|ZV9001K8-DIM-G4|ZV9001K4-DIM|ZV9001NK12-DIM-Z4"
+          },
+          {
+            "name": "button",
+            "type": "autocomplete"
+          },
+          {
+            "name": "scene",
+            "type": "autocomplete"
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "title": {
+          "en": "Set forced brightness",
+          "nl": "Stel geforceerde helderheid in"
+        },
+        "hint": {
+          "en": "Change the \"set forced brightness\" parameter of your dimmer. If this parameter is active, switching on the Dimmer 2 (S1 single click) will always set this brightness level, 0 will disable this function.",
+          "nl": "Stel de \"geforceerde helderheid\" parameter van een dimmer in. Wanneer deze parameter actief is, zal bij het inschakelen van Dimmer 2 (S1 single click) altijd naar deze helderheid inschakelen, 0 schakelt deze functie uit."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=ZB_Dimmer_3wire"
+          },
+          {
+            "type": "dropdown",
+            "name": "enable_set_forced_brightness",
+            "values": [
+              {
+                "id": "enabled",
+                "label": {
+                  "en": "Enabled",
+                  "nl": "Ingeschakeld"
+                }
+              },
+              {
+                "id": "disabled",
+                "label": {
+                  "en": "Disabled",
+                  "nl": "Uitgeschakeld"
+                }
+              }
+            ]
+          },
+          {
+            "name": "set_forced_brightness_level",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100
+          }
+        ],
+        "id": "ZB_dim_set_forced_brightness"
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "id": "ZG9101SAC_HP_Switch",
+      "name": {
+        "en": "Switch (ZigBee)"
+      },
+      "class": "light",
+      "capabilities": [
+        "onoff"
+      ],
+      "icon": "/drivers/ZG9101SAC_HP_Switch/assets/icon.svg",
+      "images": {
+        "large": "/drivers/ZG9101SAC_HP_Switch/assets/images/large.png",
+        "small": "/drivers/ZG9101SAC_HP_Switch/assets/images/small.png"
+      },
+      "zigbee": {
+        "manufacturerName": [
+          "Sunricher",
+          "NAMRON AS",
+          "NAMRON  AS",
+          "NAMRON As"
+        ],
+        "productId": [
+          "ZG9101SAC_HP_Switch",
+          "ON/OFF",
+          "4512704"
+        ],
+        "deviceId": 256,
+        "profileId": 260,
+        "learnmode": {
+          "image": "/drivers/ZG9101SAC_HP_Switch/assets/icon.svg",
+          "instruction": {
+            "en": "Press the reset button 5 times (within 1.5 seconds) on the device, it will reset the device and active the pair mode.\nThe connected light will stay solid on for 3 seconds to indicate successful pairing."
+          }
+        }
+      }
+    },
+    {
+      "id": "ZG9101SAC_HP",
+      "name": {
+        "en": "Dimmer (ZigBee)"
+      },
+      "class": "light",
+      "capabilities": [
+        "dim",
+        "onoff"
+      ],
+      "icon": "/drivers/ZG9101SAC_HP/assets/icon.svg",
+      "images": {
+        "large": "/drivers/ZG9101SAC_HP/assets/images/large.png",
+        "small": "/drivers/ZG9101SAC_HP/assets/images/small.png"
+      },
+      "zigbee": {
+        "manufacturerName": [
+          "Sunricher",
+          "NAMRON AS",
+          "NAMRON  AS",
+          "NAMRON As"
+        ],
+        "productId": [
+          "ZG9101SAC-HP",
+          "4512700"
+        ],
+        "deviceId": 257,
+        "profileId": 260,
+        "learnmode": {
+          "image": "/drivers/ZG9101SAC_HP/assets/icon.svg",
+          "instruction": {
+            "en": "Press the reset button 5 times (within 1.5 seconds) on the device, it will reset the device and active the pair mode.\nThe connected light will stay solid on for 3 seconds to indicate successful pairing."
+          }
+        }
+      }
+    },
+    {
+      "id": "ZGRC_KEY_004",
+      "name": {
+        "en": "WallController (ZigBee)"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_battery",
+        "alarm_battery"
+      ],
+      "energy": {
+        "batteries": [
+          "CR2450"
+        ]
+      },
+      "icon": "/drivers/ZGRC_KEY_004/assets/icon.svg",
+      "images": {
+        "large": "/drivers/ZGRC_KEY_004/assets/images/large.png",
+        "small": "/drivers/ZGRC_KEY_004/assets/images/small.png"
+      },
+      "zigbee": {
+        "manufacturerName": [
+          "Sunricher",
+          "NAMRON AS",
+          "NAMRON  AS",
+          "NAMRON As"
+        ],
+        "productId": [
+          "ZGRC-KEY-004",
+          "ZGRC_KEY_004",
+          "4512701"
+        ],
+        "deviceId": 1,
+        "profileId": 260,
+        "learnmode": {
+          "image": "/drivers/ZGRC_KEY_004/assets/icon.svg",
+          "instruction": {
+            "en": "Press and hold down both buttons until the LED indicator turns on.\nRelease both button and immediately press the ON/OFF button and the remote will be set to pair mode.\nThe green LED indicator blinking serveral times will indicate successful inclusion.\n\nReset...\nWhen you can't successfully add a device, reset the device first.\nPress and hold down both buttons until the LED indicator turns on.\nRelease both button and immediately press the ON/OFF button 5 times and the remote will be reset."
+          }
+        }
+      }
+    },
+    {
+      "id": "ZG2833K4_EU06",
+      "name": {
+        "en": "WallController (ZigBee)"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_battery",
+        "alarm_battery"
+      ],
+      "energy": {
+        "batteries": [
+          "CR2450"
+        ]
+      },
+      "icon": "/drivers/ZG2833K4_EU06/assets/icon.svg",
+      "images": {
+        "large": "/drivers/ZG2833K4_EU06/assets/images/large.png",
+        "small": "/drivers/ZG2833K4_EU06/assets/images/small.png"
+      },
+      "zigbee": {
+        "manufacturerName": [
+          "Sunricher",
+          "NAMRON AS",
+          "NAMRON  AS",
+          "NAMRON As"
+        ],
+        "productId": [
+          "ZG2833K4_EU06",
+          "4512719"
+        ],
+        "deviceId": 1,
+        "profileId": 260,
+        "learnmode": {
+          "image": "/drivers/ZG2833K4_EU06/assets/learnmode.svg",
+          "instruction": {
+            "en": "Press and hold down both Reset and Pair buttons until the LED indicator turns on.\nRelease both button and immediately press the Pair button on the top right corner and the remote will be set to pair mode.\nThe green LED indicator blinking serveral times will indicate successful inclusion.\n\nReset...\nWhen you can't successfully add a device, reset the device first.\nPress and hold down both Reset and Pair buttons until the LED indicator turns on.\nRelease both button and immediately press the Reset button 5 times and the remote will be reset."
+          }
+        }
+      }
+    },
+    {
+      "id": "ZG2833K8_EU05",
+      "name": {
+        "en": "WallController (ZigBee)"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_battery",
+        "alarm_battery"
+      ],
+      "energy": {
+        "batteries": [
+          "CR2450"
+        ]
+      },
+      "icon": "/drivers/ZG2833K8_EU05/assets/icon.svg",
+      "images": {
+        "large": "/drivers/ZG2833K8_EU05/assets/images/large.png",
+        "small": "/drivers/ZG2833K8_EU05/assets/images/small.png"
+      },
+      "zigbee": {
+        "manufacturerName": [
+          "Sunricher",
+          "NAMRON AS",
+          "NAMRON  AS",
+          "NAMRON As"
+        ],
+        "productId": [
+          "ZG2833K8_EU05",
+          "4512703"
+        ],
+        "deviceId": 1,
+        "profileId": 260,
+        "learnmode": {
+          "image": "/drivers/ZG2833K8_EU05/assets/learnmode.svg",
+          "instruction": {
+            "en": "Press and hold down both ON-1 and OFF-1 buttons until the LED indicator turns on.\nRelease both button and immediately press the OFF-1 button on the top right corner and the remote will be set to pair mode.\nThe green LED indicator blinking serveral times will indicate successful inclusion.\n\nReset...\nWhen you can't successfully add a device, reset the device first.\nPress and hold down both ON-1 and OFF-1 buttons until the LED indicator turns on.\nRelease both button and immediately press the ON-1 button 5 times and the remote will be reset."
+          }
+        }
+      }
+    }
+    ,
+    {
+      "id": "ZG2868A",
+      "name": {
+        "en": "RemoteControl (ZigBee)"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_battery",
+        "alarm_battery"
+      ],
+      "energy": {
+        "batteries": [
+          "CR2032", "CR2032"
+        ]
+      },
+      "icon": "/drivers/ZG2868A/assets/icon.svg",
+      "images": {
+        "large": "/drivers/ZG2868A/assets/images/large.png",
+        "small": "/drivers/ZG2868A/assets/images/small.png"
+      },
+      "zigbee": {
+        "manufacturerName": [
+          "Sunricher",
+          "NAMRON AS",
+          "NAMRON  AS",
+          "NAMRON As"
+        ],
+        "productId": [
+          "ZG2868A",
+          "4512706"
+        ],
+        "deviceId": 1,
+        "profileId": 260,
+        "learnmode": {
+          "image": "/drivers/ZG2868A/assets/learnmode.svg",
+          "instruction": {
+            "en": "Press and hold down the Set button until the LED indicator turns on.\nRelease the button and immediately press the Pair button and the remote will be set to pair mode.\n\nReset...\nWhen you can't successfully add a device, reset the device first.\nPress and hold down the Set button until the LED indicator turns on.\nRelease the button and immediately press the Set button 5 times and the remote will be reset."
+          }
+        }
+      }
+    },
+    {
+      "id": "ZGRC_KEY_037",
+      "name": {
+        "en": "RemoteControl (ZigBee)"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_battery",
+        "alarm_battery"
+      ],
+      "energy": {
+        "batteries": [
+          "CR2032"
+        ]
+      },
+      "icon": "/drivers/ZGRC_KEY_037/assets/icon.svg",
+      "images": {
+        "large": "/drivers/ZGRC_KEY_037/assets/images/large.png",
+        "small": "/drivers/ZGRC_KEY_037/assets/images/small.png"
+      },
+      "zigbee": {
+        "manufacturerName": [
+          "Sunricher",
+          "NAMRON AS",
+          "NAMRON  AS",
+          "NAMRON As"
+        ],
+        "productId": [
+          "ZGRC-KEY-037",
+          "ZGRC_KEY_037",
+          "4512705"
+        ],
+        "deviceId": 1,
+        "profileId": 260,
+        "learnmode": {
+          "image": "/drivers/ZGRC_KEY_037/assets/learnmode.svg",
+          "instruction": {
+            "en": "Press and hold down the All ON button until the LED indicator turns on.\nRelease button and immediately press the All OFF button and the remote will be set to pair mode.\nThe green LED indicator blinking serveral times will indicate successful inclusion.\n\nReset...\nWhen you can't successfully add a device, reset the device first.\nPress and hold down the All ON button until the LED indicator turns on.\nRelease the button and immediately press the All ON button 5 times and the remote will be reset."
+          }
+        }
+      }
+    },
+    {
+      "id": "ZGRC_KEY_001",
+      "name": {
+        "en": "WallController (ZigBee)"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_battery",
+        "alarm_battery"
+      ],
+      "energy": {
+        "batteries": [
+          "CR2450"
+        ]
+      },
+      "icon": "/drivers/ZGRC_KEY_001/assets/icon.svg",
+      "images": {
+        "large": "/drivers/ZGRC_KEY_001/assets/images/large.png",
+        "small": "/drivers/ZGRC_KEY_001/assets/images/small.png"
+      },
+      "zigbee": {
+        "manufacturerName": [
+          "Sunricher",
+          "NAMRON AS",
+          "NAMRON  AS",
+          "NAMRON As"
+        ],
+        "productId": [
+          "ZGRC-KEY-001",
+          "ZGRC_KEY_001",
+          "4512702"
+        ],
+        "deviceId": 1,
+        "profileId": 260,
+        "learnmode": {
+          "image": "/drivers/ZGRC_KEY_001/assets/learnmode.svg",
+          "instruction": {
+            "en": "Press and hold down the ON button until the LED indicator turns on.\nRelease button and immediately press the OFF button and the remote will be set to pair mode.\nThe green LED indicator blinking serveral times will indicate successful inclusion.\n\nReset...\nWhen you can't successfully add a device, reset the device first.\nPress and hold down the ON button until the LED indicator turns on.\nRelease the button and immediately press the ON button 5 times and the remote will be reset."
+          }
+        }
+      }
+    },
+    {
+      "id": "ZG_RGBW_CCT",
+      "name": {
+        "en": "Light Color (ZigBee)"
+      },
+      "class": "light",
+      "capabilities": [
+        "light_hue",
+        "light_saturation",
+        "light_temperature",
+        "dim",
+        "onoff"
+      ],
+      "icon": "/drivers/ZG_RGBW_CCT/assets/icon.svg",
+      "images": {
+        "large": "/drivers/ZG_RGBW_CCT/assets/images/large.png",
+        "small": "/drivers/ZG_RGBW_CCT/assets/images/small.png"
+      },
+      "zigbee": {
+        "manufacturerName": [
+          "Sunricher",
+          "NAMRON AS",
+          "NAMRON  AS",
+          "NAMRON As",
+          "Osram"
+        ],
+        "productId": [
+          "RGBW-CCT",
+          "RGBW Lighting",
+          "RGB-CCT",
+          "Flex RGBW",
+          "4512707"
+        ],
+        "deviceId": 528,
+        "profileId": 49246,
+        "learnmode": {
+          "image": "/drivers/ZG_RGBW_CCT/assets/icon.svg",
+          "instruction": {
+            "en": "Press the reset button on the device 5 times or repeatedly power OFF/ON 5 times to make the device into pair mode. The device slowly flashing means the device is in pair mode. The pair mode generally lasts for 15 seconds after each power on. Re-power the device to enter pair mode again."
+          }
+        }
+      }
+    },
+    {
+      "id": "ZG_CCT",
+      "name": {
+        "en": "Light CCT (ZigBee)"
+      },
+      "class": "light",
+      "capabilities": [
+        "light_temperature",
+        "dim",
+        "onoff"
+      ],
+      "icon": "/drivers/ZG_CCT/assets/icon.svg",
+      "images": {
+        "large": "/drivers/ZG_CCT/assets/images/large.png",
+        "small": "/drivers/ZG_CCT/assets/images/small.png"
+      },
+      "zigbee": {
+        "manufacturerName": [
+          "Sunricher",
+          "NAMRON AS",
+          "NAMRON  AS",
+          "NAMRON As"
+        ],
+        "productId": [
+          "CCT Lighting",
+          "4512707"
+        ],
+        "deviceId": 544,
+        "profileId": 49246,
+        "learnmode": {
+          "image": "/drivers/ZG_CCT/assets/icon.svg",
+          "instruction": {
+            "en": "Press the reset button on the device 5 times or repeatedly power OFF/ON 5 times to make the device into pair mode. The device slowly flashing means the device is in pair mode. The pair mode generally lasts for 15 seconds after each power on. Re-power the device to enter pair mode again."
+          }
+        }
+      }
+    },
+    {
+      "id": "ZG_DIM",
+      "name": {
+        "en": "Light DIM (ZigBee)"
+      },
+      "class": "light",
+      "capabilities": [
+        "dim",
+        "onoff"
+      ],
+      "icon": "/drivers/ZG_DIM/assets/icon.svg",
+      "images": {
+        "large": "/drivers/ZG_DIM/assets/images/large.png",
+        "small": "/drivers/ZG_DIM/assets/images/small.png"
+      },
+      "zigbee": {
+        "manufacturerName": [
+          "Sunricher",
+          "NAMRON AS",
+          "NAMRON  AS",
+          "NAMRON As"
+        ],
+        "productId": [
+          "DIM Lighting",
+          "4512708",
+          "4512707"          
+        ],
+        "deviceId": 257,
+        "profileId": 260,
+        "learnmode": {
+          "image": "/drivers/ZG_DIM/assets/icon.svg",
+          "instruction": {
+            "en": "Press the reset button on the device 5 times or repeatedly power OFF/ON 5 times to make the device into pair mode. The device slowly flashing means the device is in pair mode. The pair mode generally lasts for 15 seconds after each power on. Re-power the device to enter pair mode again."
+          }
+        }
+      }
+    },
+    {
+      "id": "ZV9101SAC_HP",
+      "name": {
+        "en": "Dimmer (Z-Wave)"
+      },
+      "class": "light",
+      "capabilities": ["onoff", "dim"],
+      "icon": "/drivers/ZV9101SAC_HP/assets/icon.svg",
+      "images": {
+        "large": "/drivers/ZV9101SAC_HP/assets/images/large.png",
+        "small": "/drivers/ZV9101SAC_HP/assets/images/small.png"
+      },
+      "zwave": {
+        "manufacturerId": [
+          816, 1080
+        ],
+        "productTypeId": [
+          512
+        ],
+        "productId": [
+          53253
+        ],
+        "learnmode": {
+          "image": "/drivers/ZV9101SAC_HP/assets/learnmode.svg",
+          "instruction": {
+            "en": "Triple press the reset button on the device, it will set the device into pair mode. Reset the device and restart Homey Hub if it cannot be successfully added.\n\nReset...\nReset the device with the Homey App. Go to Homey App -> More -> Settings -> Z-Wave -> Remove a Z-Wave device, then triple press the reset button on the device."
+          }
+        },
+        "associationGroups": [
+          1
+        ],
+        "associationGroupsOptions": {
+          "1": {
+            "hint": {
+              "en": "Lifeline association group (do not change)"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "ZV9101SAC_HP_Switch",
+      "name": {
+        "en": "Switch (Z-Wave)"
+      },
+      "class": "light",
+      "capabilities": ["onoff"],
+      "icon": "/drivers/ZV9101SAC_HP_Switch/assets/icon.svg",
+      "images": {
+        "large": "/drivers/ZV9101SAC_HP_Switch/assets/images/large.png",
+        "small": "/drivers/ZV9101SAC_HP_Switch/assets/images/small.png"
+      },
+      "zwave": {
+        "manufacturerId": [
+          816, 1080
+        ],
+        "productTypeId": [
+          512
+        ],
+        "productId": [
+          53254
+        ],
+        "learnmode": {
+          "image": "/drivers/ZV9101SAC_HP_Switch/assets/learnmode.svg",
+          "instruction": {
+            "en": "Triple press the reset button on the device, it will set the device into pair mode. Reset the device and restart Homey Hub if it cannot be successfully added.\n\nReset...\nReset the device with the Homey App. Go to Homey App -> More -> Settings -> Z-Wave -> Remove a Z-Wave device, then triple press the reset button on the device."
+          }
+        },
+        "associationGroups": [
+          1
+        ],
+        "associationGroupsOptions": {
+          "1": {
+            "hint": {
+              "en": "Lifeline association group (do not change)"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "ZV9001K2_DIM",
+      "name": {
+        "en": "WallController (Z-Wave)"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_battery",
+        "alarm_battery"
+      ],
+      "energy": {
+        "batteries": [
+          "CR2450"
+        ]
+      },
+      "icon": "/drivers/ZV9001K2_DIM/assets/icon.svg",
+      "images": {
+        "large": "/drivers/ZV9001K2_DIM/assets/images/large.png",
+        "small": "/drivers/ZV9001K2_DIM/assets/images/small.png"
+      },
+      "zwave": {
+        "manufacturerId": [
+          816, 1080
+        ],
+        "productTypeId": [
+          768
+        ],
+        "productId": [
+          41743
+        ],
+        "learnmode": {
+          "image": "/drivers/ZV9001K2_DIM/assets/icon.svg",
+          "instruction": {
+            "en": "Press and hold down both buttons until the LED indicator turns on, the device will be set to pair mode. Reset the device and restart Homey Hub if it cannot be successfully added.\n\nReset...\nReset the device with the Homey App. Go to Homey App -> More -> Settings -> Z-Wave -> Remove a Z-Wave device, then press and hold down both buttons until the LED indicator turns on."
+          }
+        },
+        "associationGroups": [
+          1
+        ]
+      }
+    },
+    {
+      "id": "ZV9001NK12_DIM_Z4",
+      "name": {
+        "en": "RemoteControl (Z-Wave)"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_battery",
+        "alarm_battery"
+      ],
+      "energy": {
+        "batteries": [
+          "CR2450", "CR2450"
+        ]
+      },
+      "icon": "/drivers/ZV9001NK12_DIM_Z4/assets/icon.svg",
+      "images": {
+        "large": "/drivers/ZV9001NK12_DIM_Z4/assets/images/large.png",
+        "small": "/drivers/ZV9001NK12_DIM_Z4/assets/images/small.png"
+      },
+      "zwave": {
+        "manufacturerId": [
+          816, 1080
+        ],
+        "productTypeId": [
+          768
+        ],
+        "productId": [
+          45826
+        ],
+        "learnmode": {
+          "image": "/drivers/ZV9001NK12_DIM_Z4/assets/learnmode.svg",
+          "instruction": {
+            "en": "Press and hold down both All ON and All OFF buttons until the LED indicator turns on, the device will be set to pair mode. Reset the device and restart Homey Hub if it cannot be successfully added.\n\nReset...\nReset the device with the Homey App. Go to Homey App -> More -> Settings -> Z-Wave -> Remove a Z-Wave device, then press and hold down both All ON and All OFF buttons until the LED indicator turns on."
+          }
+        },
+        "associationGroups": [
+          1
+        ]
+      }
+    },
+    {
+      "id": "ZV9001K4_DIM_G2",
+      "name": {
+        "en": "WallController (Z-Wave)"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_battery",
+        "alarm_battery"
+      ],
+      "energy": {
+        "batteries": [
+          "CR2450"
+        ]
+      },
+      "icon": "/drivers/ZV9001K4_DIM_G2/assets/icon.svg",
+      "images": {
+        "large": "/drivers/ZV9001K4_DIM_G2/assets/images/large.png",
+        "small": "/drivers/ZV9001K4_DIM_G2/assets/images/small.png"
+      },
+      "zwave": {
+        "manufacturerId": [
+          816, 1080
+        ],
+        "productTypeId": [
+          768
+        ],
+        "productId": [
+          41734
+        ],
+        "learnmode": {
+          "image": "/drivers/ZV9001K4_DIM_G2/assets/learnmode.svg",
+          "instruction": {
+            "en": "Press and hold down both ON-1 and OFF-1 buttons until the LED indicator turns on, the device will be set to pair mode. Reset the device and restart Homey Hub if it cannot be successfully added.\n\nReset...\nReset the device with the Homey App. Go to Homey App -> More -> Settings -> Z-Wave -> Remove a Z-Wave device, then press and hold down both ON-1 and OFF-1 buttons until the LED indicator turns on."
+          }
+        },
+        "associationGroups": [
+          1
+        ]
+      }
+    },
+    {
+      "id": "ZV9001K4_DIM",
+      "name": {
+        "en": "WallController (Z-Wave)"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_battery",
+        "alarm_battery"
+      ],
+      "energy": {
+        "batteries": [
+          "CR2450"
+        ]
+      },
+      "icon": "/drivers/ZV9001K4_DIM/assets/icon.svg",
+      "images": {
+        "large": "/drivers/ZV9001K4_DIM/assets/images/large.png",
+        "small": "/drivers/ZV9001K4_DIM/assets/images/small.png"
+      },
+      "zwave": {
+        "manufacturerId": [
+          816, 1080
+        ],
+        "productTypeId": [
+          768
+        ],
+        "productId": [
+          41744
+        ],
+        "learnmode": {
+          "image": "/drivers/ZV9001K4_DIM/assets/learnmode.svg",
+          "instruction": {
+            "en": "Press and hold down both ON and OFF buttons until the LED indicator turns on, the device will be set to pair mode. Reset the device and restart Homey Hub if it cannot be successfully added.\n\nReset...\nReset the device with the Homey App. Go to Homey App -> More -> Settings -> Z-Wave -> Remove a Z-Wave device, then press and hold down both ON and OFF buttons until the LED indicator turns on."
+          }
+        },
+        "associationGroups": [
+          1
+        ]
+      }
+    },
+    {
+      "id": "ZV9001K8_DIM_G4",
+      "name": {
+        "en": "WallController (Z-Wave)"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_battery",
+        "alarm_battery"
+      ],
+      "energy": {
+        "batteries": [
+          "CR2450"
+        ]
+      },
+      "icon": "/drivers/ZV9001K8_DIM_G4/assets/icon.svg",
+      "images": {
+        "large": "/drivers/ZV9001K8_DIM_G4/assets/images/large.png",
+        "small": "/drivers/ZV9001K8_DIM_G4/assets/images/small.png"
+      },
+      "zwave": {
+        "manufacturerId": [
+          816, 1080
+        ],
+        "productTypeId": [
+          768
+        ],
+        "productId": [
+          41733
+        ],
+        "learnmode": {
+          "image": "/drivers/ZV9001K8_DIM_G4/assets/learnmode.svg",
+          "instruction": {
+            "en": "Press and hold down both ON-1 and OFF-1 buttons until the LED indicator turns on, the device will be set to pair mode. Reset the device and restart Homey Hub if it cannot be successfully added.\n\nReset...\nReset the device with the Homey App. Go to Homey App -> More -> Settings -> Z-Wave -> Remove a Z-Wave device, then press and hold down both ON-1 and OFF-1 buttons until the LED indicator turns on."
+          }
+        },
+        "associationGroups": [
+          1
+        ]
+      }
+    },
+    {
+      "id": "ZV9020A",
+      "name": {
+        "en": "Outlet (Z-Wave)"
+      },
+      "class": "socket",
+      "capabilities": [
+        "onoff",
+        "measure_power",
+        "meter_power"
+      ],
+      "energy": {
+        "batteries": [
+          "CR2450", "CR2450"
+        ]
+      },
+      "icon": "/drivers/ZV9020A/assets/icon.svg",
+      "images": {
+        "large": "/drivers/ZV9020A/assets/images/large.png",
+        "small": "/drivers/ZV9020A/assets/images/small.png"
+      },
+      "zwave": {
+        "manufacturerId": [
+          816, 1080
+        ],
+        "productTypeId": [
+          513
+        ],
+        "productId": [
+          53252
+        ],
+        "learnmode": {
+          "image": "/drivers/ZV9020A/assets/learnmode.svg",
+          "instruction": {
+            "en": "Triple press the button on the device, it will set the device into pair mode. Reset the device and restart Homey Hub if it cannot be successfully added.\n\nReset...\nReset the device with the Homey App. Go to Homey App -> More -> Settings -> Z-Wave -> Remove a Z-Wave device, then triple press the reset button on the device. Or press and hold down the button on the device more than 10 seconds."
+          },
+          "associationGroups": [
+            1
+          ]
+        }
+      }
+    },
+    {
+      "id": "ZV9010A",
+      "name": {
+        "en": "Door/Window Sensor (Z-Wave)"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "alarm_contact",
+        "alarm_tamper",
+        "measure_battery"
+      ],
+      "energy": {
+        "batteries": [
+          "CR2450", "CR2450"
+        ]
+      },
+      "icon": "/drivers/ZV9010A/assets/icon.svg",
+      "images": {
+        "large": "/drivers/ZV9010A/assets/images/large.png",
+        "small": "/drivers/ZV9010A/assets/images/small.png"
+      },
+      "zwave": {
+        "manufacturerId": [
+          816, 1080
+        ],
+        "productTypeId": [
+          768
+        ],
+        "productId": [
+          53251
+        ],
+        "learnmode": {
+          "image": "/drivers/ZV9010A/assets/learnmode.svg",
+          "instruction": {
+            "en": "Triple press the button on the device, it will set the device into pair mode. Reset the device and restart Homey Hub if it cannot be successfully added.\n\nReset...\nReset the device with the Homey App. Go to Homey App -> More -> Settings -> Z-Wave -> Remove a Z-Wave device, then triple press the reset button on the device. Or press and hold down the button on the device more than 10 seconds."
+          },
+          "associationGroups": [
+            1, 2 
+          ]
+        }
+      }
+    },
+    {
+      "id": "ZV9101CS",
+      "name": {
+        "en": "Dimmer (Z-Wave)"
+      },
+      "class": "light",
+      "capabilities": ["onoff", "dim"],
+      "icon": "/drivers/ZV9101CS/assets/icon.svg",
+      "images": {
+        "large": "/drivers/ZV9101CS/assets/images/large.png",
+        "small": "/drivers/ZV9101CS/assets/images/small.png"
+      },
+      "zwave": {
+        "manufacturerId": [
+          816, 1080
+        ],
+        "productTypeId": [
+          512
+        ],
+        "productId": [
+          53250
+        ],
+        "learnmode": {
+          "image": "/drivers/ZV9101CS/assets/learnmode.svg",
+          "instruction": {
+            "en": "Triple press the reset (Rrog.) button on the device, it will set the device into pair mode. Reset the device and restart Homey Hub if it cannot be successfully added.\n\nReset...\nReset the device with the Homey App. Go to Homey App -> More -> Settings -> Z-Wave -> Remove a Z-Wave device, then triple press the reset button on the device."
+          }
+        },
+        "associationGroups": [
+          1
+        ],
+        "associationGroupsOptions": {
+          "1": {
+            "hint": {
+              "en": "Lifeline association group (do not change)"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

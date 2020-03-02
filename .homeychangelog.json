@@ -1,0 +1,23 @@
+{
+  "1.0.0": {
+    "en": "first publish"
+  },
+  "1.0.1": {
+    "en": "Add more ZigBee Lights support"
+  },
+  "1.0.2": {
+    "en": "Update README"
+  },
+  "1.0.3": {
+    "en": "Add support for ZG2833K8_EU05, ZG2868A, ZV9001NK12-DIM-Z4, ZV9001K4-ZV9001K4-DIM-G2, ZV9001K8-DIM-G4, ZV9020A, ZV9010A"
+  },
+  "1.0.4": {
+    "en": "Remove markdown formatting in README, remove changelog in README, remote URLs in README."
+  },
+  "1.0.5": {
+    "en": "Added support for ZV9101CS, ZV9001K4-DIM."
+  },
+  "1.0.6": {
+    "en": "Added support for ZV9101CS, ZV9001K4-DIM."
+  }
+}
