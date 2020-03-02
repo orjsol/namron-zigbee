@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500px" height="500px" viewBox="0 0 500 500" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>ZV9001NK12_DIM_Z4</title>
+    <desc>Created with Sketch.</desc>
+    <g id="ZV9001NK12_DIM_Z4" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" stroke="#000000" stroke-width="2" x="164" y="1" width="173" height="665"></rect>
+        <circle id="Oval" stroke="#000000" stroke-width="2" cx="250.5" cy="60.5" r="22.5"></circle>
+        <ellipse id="Oval-Copy" stroke="#000000" stroke-width="2" cx="250.5" cy="132" rx="18.5" ry="19"></ellipse>
+        <circle id="Oval-Copy" stroke="#000000" stroke-width="2" cx="250.5" cy="131.5" r="5.5"></circle>
+        <rect id="Rectangle" fill="#000000" x="249" y="54" width="3" height="13"></rect>
+        <g id="WallController-/-Item-2" transform="translate(162.000000, 181.000000)">
+            <rect id="Rectangle" stroke="#000000" stroke-width="2" x="17" y="1" width="62" height="38" rx="19"></rect>
+            <rect id="Rectangle-Copy" stroke="#000000" stroke-width="2" x="96" y="1" width="62" height="38" rx="19"></rect>
+            <circle id="Oval-Copy-2" stroke="#000000" stroke-width="2" cx="127" cy="20" r="6"></circle>
+            <rect id="Rectangle" fill="#000000" fill-rule="evenodd" x="47" y="13" width="2" height="14"></rect>
+        </g>
+        <g id="WallController-/-Item-2" transform="translate(162.000000, 249.000000)">
+            <rect id="Rectangle" stroke="#000000" stroke-width="2" x="17" y="1" width="62" height="38" rx="19"></rect>
+            <rect id="Rectangle-Copy" stroke="#000000" stroke-width="2" x="96" y="1" width="62" height="38" rx="19"></rect>
+            <circle id="Oval-Copy-2" stroke="#000000" stroke-width="2" cx="127" cy="20" r="6"></circle>
+            <rect id="Rectangle" fill="#000000" fill-rule="evenodd" x="47" y="13" width="2" height="14"></rect>
+        </g>
+        <g id="WallController-/-Item-2" transform="translate(165.000000, 317.000000)">
+            <rect id="Rectangle" stroke="#000000" stroke-width="2" x="17" y="1" width="62" height="38" rx="19"></rect>
+            <rect id="Rectangle-Copy" stroke="#000000" stroke-width="2" x="96" y="1" width="62" height="38" rx="19"></rect>
+            <circle id="Oval-Copy-2" stroke="#000000" stroke-width="2" cx="127" cy="20" r="6"></circle>
+            <rect id="Rectangle" fill="#000000" fill-rule="evenodd" x="47" y="13" width="2" height="14"></rect>
+        </g>
+        <g id="WallController-/-Item-2" transform="translate(162.000000, 385.000000)">
+            <rect id="Rectangle" stroke="#000000" stroke-width="2" x="17" y="1" width="62" height="38" rx="19"></rect>
+            <rect id="Rectangle-Copy" stroke="#000000" stroke-width="2" x="96" y="1" width="62" height="38" rx="19"></rect>
+            <circle id="Oval-Copy-2" stroke="#000000" stroke-width="2" cx="127" cy="20" r="6"></circle>
+            <rect id="Rectangle" fill="#000000" fill-rule="evenodd" x="47" y="13" width="2" height="14"></rect>
+        </g>
+        <g id="WallController-/-Item-2-S1-S2" transform="translate(162.000000, 453.000000)">
+            <rect id="Rectangle" stroke="#000000" stroke-width="2" x="17" y="1" width="62" height="38" rx="19"></rect>
+            <rect id="Rectangle-Copy" stroke="#000000" stroke-width="2" x="96" y="1" width="62" height="38" rx="19"></rect>
+            <path d="M38.7177734,24.0317383 C38.8920898,26.5849609 41.0454102,28.2460938 44.2753906,28.2460938 C47.5874023,28.2460938 49.7407227,26.5336914 49.7407227,23.7958984 C49.7407227,21.7041016 48.5205078,20.4736328 45.434082,19.796875 L43.793457,19.4379883 C41.7734375,18.9970703 40.9838867,18.1972656 40.9838867,17.0283203 C40.9838867,15.5209961 42.4091797,14.6186523 44.2548828,14.6186523 C46.1826172,14.6186523 47.4643555,15.6132812 47.628418,17.2333984 L49.4741211,17.2333984 C49.3920898,14.7211914 47.2592773,12.9575195 44.3061523,12.9575195 C41.2402344,12.9575195 39.0869141,14.6699219 39.0869141,17.1103516 C39.0869141,19.2124023 40.3686523,20.5556641 43.3320312,21.2016602 L44.9726562,21.5605469 C47.0234375,22.0117188 47.84375,22.8320312 47.84375,24.0727539 C47.84375,25.5288086 46.3876953,26.5849609 44.3779297,26.5849609 C42.2553711,26.5849609 40.7788086,25.6210938 40.5634766,24.0317383 L38.7177734,24.0317383 Z M54.9251699,28 L54.9251699,15.1621094 L54.8841543,15.1621094 L50.9671621,17.8896484 L50.9671621,16.0336914 L54.9046621,13.2036133 L56.7093496,13.2036133 L56.7093496,28 L54.9251699,28 Z" id="S1" fill="#000000" fill-rule="nonzero"></path>
+            <path d="M115.717773,24.0317383 C115.89209,26.5849609 118.04541,28.2460938 121.275391,28.2460938 C124.587402,28.2460938 126.740723,26.5336914 126.740723,23.7958984 C126.740723,21.7041016 125.520508,20.4736328 122.434082,19.796875 L120.793457,19.4379883 C118.773438,18.9970703 117.983887,18.1972656 117.983887,17.0283203 C117.983887,15.5209961 119.40918,14.6186523 121.254883,14.6186523 C123.182617,14.6186523 124.464355,15.6132812 124.628418,17.2333984 L126.474121,17.2333984 C126.39209,14.7211914 124.259277,12.9575195 121.306152,12.9575195 C118.240234,12.9575195 116.086914,14.6699219 116.086914,17.1103516 C116.086914,19.2124023 117.368652,20.5556641 120.332031,21.2016602 L121.972656,21.5605469 C124.023438,22.0117188 124.84375,22.8320312 124.84375,24.0727539 C124.84375,25.5288086 123.387695,26.5849609 121.37793,26.5849609 C119.255371,26.5849609 117.778809,25.6210938 117.563477,24.0317383 L115.717773,24.0317383 Z M128.059447,17.4794922 C128.059447,14.8852539 130.19226,12.9575195 133.042846,12.9575195 C135.780639,12.9575195 137.667357,14.8237305 137.667357,17.0693359 C137.667357,18.6487579 136.964875,19.8432579 134.450552,22.4520456 L130.684447,26.3183594 L130.684447,26.359375 L137.913451,26.359375 L137.913451,28 L128.151732,28 L128.151732,26.7285156 L133.360717,21.2939453 C135.360228,19.2124023 135.821654,18.4125977 135.821654,17.1821289 C135.821654,15.7260742 134.73474,14.5673828 133.042846,14.5673828 C131.21765,14.5673828 129.843627,15.8183594 129.843627,17.4794922 L128.059447,17.4794922 Z" id="S2" fill="#000000" fill-rule="nonzero"></path>
+        </g>
+    </g>
+</svg>
