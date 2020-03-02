@@ -1,14 +1,14 @@
 {
-  "id": "com.easyhome.mw.zigbee",
+  "id": "com.namron.zigbee",
   "version": "1.0.7",
   "compatibility": ">=1.5.0",
   "sdk": 2,
   "brandColor": "#06A1FF",
   "name": {
-    "en": "EasyHome"
+    "en": "Namron Zigbee"
   },
   "tags": {
-    "en": ["EasyHome", "Sunricher", "EasyHome SmartHome", "EasyHome Sunricher","ZigBee", "ZigBee Light"]
+    "en": ["Namron", "Namron AS", "Namron SmartHome", "Namron Sunricher","ZigBee", "ZigBee Light"]
   },
   "description": {
     "en": "Adds support for ZigBee & Z-Wave devices."
@@ -25,13 +25,13 @@
     "small": "/assets/images/small.png"
   },
   "author": {
-    "name": "Easy Home",
-    "email": "sunricher_src@163.com"
+    "name": "Namron Zigbee",
+    "email": "post@orjansolbakken.com"
   },
   "bugs": {
-    "url": "https://github.com/easyhomesrc/Homey_EasyHome/issues"
+    "url": "https://github.com/orjsol/namron-zigbee/issues"
   },
-  "source": "https://github.com/easyhomesrc/Homey_EasyHome",
+  "source": "https://github.com/orjsol/namron-zigbee",
   "flow": {
     "triggers": [
       {
